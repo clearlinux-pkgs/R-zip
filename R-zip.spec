@@ -4,14 +4,15 @@
 #
 Name     : R-zip
 Version  : 2.0.1
-Release  : 9
+Release  : 10
 URL      : https://cran.r-project.org/src/contrib/zip_2.0.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/zip_2.0.1.tar.gz
 Summary  : Cross-Platform 'zip' Compression
 Group    : Development/Tools
 License  : CC0-1.0
 Requires: R-zip-lib = %{version}-%{release}
-Requires: R-processx
+Requires: R-assertthat
+BuildRequires : R-assertthat
 BuildRequires : R-processx
 BuildRequires : buildreq-R
 
@@ -44,10 +45,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552364218
+export SOURCE_DATE_EPOCH=1552859452
 
 %install
-export SOURCE_DATE_EPOCH=1552364218
+export SOURCE_DATE_EPOCH=1552859452
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -83,8 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library zip|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  zip || :
 
 
 %files
@@ -112,7 +112,18 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/zip/help/zip.rdx
 /usr/lib64/R/library/zip/html/00Index.html
 /usr/lib64/R/library/zip/html/R.css
-/usr/lib64/R/library/zip/libs/symbols.rds
+/usr/lib64/R/library/zip/tests/testthat.R
+/usr/lib64/R/library/zip/tests/testthat/helper.R
+/usr/lib64/R/library/zip/tests/testthat/test-errors.R
+/usr/lib64/R/library/zip/tests/testthat/test-get-zip-data-path.R
+/usr/lib64/R/library/zip/tests/testthat/test-get-zip-data.R
+/usr/lib64/R/library/zip/tests/testthat/test-large-files.R
+/usr/lib64/R/library/zip/tests/testthat/test-unzip-process.R
+/usr/lib64/R/library/zip/tests/testthat/test-unzip.R
+/usr/lib64/R/library/zip/tests/testthat/test-zip-list.R
+/usr/lib64/R/library/zip/tests/testthat/test-zip-process.R
+/usr/lib64/R/library/zip/tests/testthat/test-zip.R
+/usr/lib64/R/library/zip/tests/testthat/test-zipr.R
 
 %files lib
 %defattr(-,root,root,-)
