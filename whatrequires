@@ -1,6 +1,4 @@
 # This file contains recursive sources that require this package
-R-AER
-R-RcmdrMisc
 R-VIM
 R-alr3
 R-car
