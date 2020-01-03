@@ -4,7 +4,7 @@
 #
 Name     : R-zip
 Version  : 2.0.4
-Release  : 19
+Release  : 20
 URL      : https://cran.r-project.org/src/contrib/zip_2.0.4.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/zip_2.0.4.tar.gz
 Summary  : Cross-Platform 'zip' Compression
