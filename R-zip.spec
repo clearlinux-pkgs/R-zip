@@ -4,29 +4,18 @@
 #
 Name     : R-zip
 Version  : 2.0.4
-Release  : 21
+Release  : 22
 URL      : https://cran.r-project.org/src/contrib/zip_2.0.4.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/zip_2.0.4.tar.gz
 Summary  : Cross-Platform 'zip' Compression
 Group    : Development/Tools
 License  : CC0-1.0
 Requires: R-zip-lib = %{version}-%{release}
-Requires: R-processx
-BuildRequires : R-processx
 BuildRequires : buildreq-R
 
 %description
-# zip
-> Cross-Platform ‘zip’ Compression
-[![Linux Build
-Status](https://travis-ci.org/r-lib/zip.svg?branch=master)](https://travis-ci.org/r-lib/zip)
-[![Windows Build
-status](https://ci.appveyor.com/api/projects/status/github/r-lib/zip?svg=true)](https://ci.appveyor.com/project/gaborcsardi/zip)
-[![](https://www.r-pkg.org/badges/version/zip)](https://www.r-pkg.org/pkg/zip)
-[![CRAN RStudio mirror
-downloads](https://cranlogs.r-pkg.org/badges/zip)](https://www.r-pkg.org/pkg/zip)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/r-lib/zip/master.svg)](https://codecov.io/github/r-lib/zip?branch=master)
+for the 'zip' function, that does not require any additional
+    external tools on any platform.
 
 %package lib
 Summary: lib components for the R-zip package.
@@ -38,21 +27,22 @@ lib components for the R-zip package.
 
 %prep
 %setup -q -c -n zip
+cd %{_builddir}/zip
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567439507
+export SOURCE_DATE_EPOCH=1589567052
 
 %install
-export SOURCE_DATE_EPOCH=1567439507
+export SOURCE_DATE_EPOCH=1589567052
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

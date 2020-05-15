@@ -1,9 +1,2 @@
 # This file contains recursive sources that require this package
-R-VIM
-R-alr3
-R-car
-R-drc
-R-dynlm
 R-openxlsx
-R-rio
-R-systemfit
